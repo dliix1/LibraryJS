@@ -63,7 +63,7 @@ function kreiranjeKnjige(){
 
     let imeKnjige = prompt ("Unesite ime knjige:", " ");
     let brojKnjige = prompt ("Unesite broj knjige:", " ")
-    let statusKnjige = false;
+    let statusKnjigeDaLiJeIzdataIliNe = false;
 
     if (validacijaZaKreacijuKnjige(imeKnjige, brojKnjige)){
         alert("Knjiga je uspjesno napravljena!");
