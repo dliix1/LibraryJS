@@ -103,4 +103,30 @@ function podizanjeKnjige(){
     }
 
 }
+
+function validacijaRacunaZaPodizanjeKnjige(){
+    
+    let brojRacuna = prompt ("Unesite broj racuna!", " ");
+
+    for (let i = 0; i < korisnik.length; i++){
+        if (korisnik[i].brojRacuna == brojRacuna){
+            return true;
+        }
+
+        return false;
+    }
+}
+
+function validacijaKnjigeZaPodizanjeKnjige(){
+
+    let brojKnjige = prompt ("Unesite broj knjige!", " ");
+
+    for (let i = 0; i < knjiga.length; i++){
+        if (knjiga[i].brojKnjige == brojKnjige){
+            return true;
+        }
+
+        return false;
+    }
+}
 }
