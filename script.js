@@ -1,8 +1,8 @@
 let korisnik = new Array();
-let knjiga = new Array();
+let knjige = new Array();
 window.onload = menu();
 
-function unos(){
+function menu(){
 
     let unosKorisnika = document.getElementById("unos").value;
 
@@ -25,8 +25,10 @@ function unos(){
 
 		case "5":
 			ispisRacuna();
-			break;
+            break;
+    }
 }
+
 
 function kreiranjeRacuna(){
 
@@ -41,6 +43,7 @@ function kreiranjeRacuna(){
     }
     
 }
+
 
 function validacijaZaKreacijuRacuna(){
 
@@ -59,6 +62,7 @@ function validacijaZaKreacijuRacuna(){
 
 }
 
+
 function kreiranjeKnjige(){
 
     let imeKnjige = prompt ("Unesite ime knjige:", " ");
@@ -68,21 +72,22 @@ function kreiranjeKnjige(){
     if (validacijaZaKreacijuKnjige(imeKnjige, brojKnjige)){
         alert("Knjiga je uspjesno napravljena!");
 
-        knjiga.push(imeKnjige, brojKnjige);
+        knjige.push(imeKnjige, brojKnjige);
     }
 
 }
 
+
 function validacijaZaKreacijuKnjige(){
 
-    for (let i = 0; i < knjiga.length; i++){
-        if (knjiga[i] == imeKnjige){
+    for (let i = 0; i < knjige.length; i++){
+        if (knjige[i] == imeKnjige){
             alert ("Vec postoji knjiga sa unijetim imenom!")
             return false;
 
         }
 
-        else if (knjiga[i] == brojKnjige){
+        else if (knjige[i] == brojKnjige){
             alert ("Vec postoji knjiga sa unijetim brojem!")
             return false;
 
@@ -93,16 +98,34 @@ function validacijaZaKreacijuKnjige(){
     
 }
 
+
 function podizanjeKnjige(){
 
     let brojRacuna = prompt ("Unesite broj racuna!", " ");
     let brojKnjige = prompt ("Unesite broj knjige!", " ");
 
-    if (brojRacuna == null){
-        alert ("Ne postoji racun sa unijetim brojem!")
-    }
+    if (validacijaRacunaZaPodizanjeKnjige(brojRacuna) && validacijaKnjigeZaPodizanjeKnjige(brojKnjige)){
 
+        let knjiga;
+
+        for (let i = 0; i < knjige.length; i++){
+            if (knjige[i].brojKnjige == brojKnjige){
+                knjige[i].statusKnjigeDaLiJeIzdataIliNe = true;
+                knjiga = knjige[i]
+            }
+        }
+
+
+        for (let i = 0; i < korisnik.length; i++){
+            if (korisnik[i].brojRacuna == brojRacuna){
+                korisnik[i].knjiga.push(knjiga)
+            }
+        }
+
+        alert ("Uspjesno ste podigli knjigu!")
+    }
 }
+
 
 function validacijaRacunaZaPodizanjeKnjige(){
     
@@ -113,20 +136,39 @@ function validacijaRacunaZaPodizanjeKnjige(){
             return true;
         }
 
+        alert ("Unijeti racun ne postoji!");
         return false;
     }
 }
+
 
 function validacijaKnjigeZaPodizanjeKnjige(){
 
     let brojKnjige = prompt ("Unesite broj knjige!", " ");
 
-    for (let i = 0; i < knjiga.length; i++){
-        if (knjiga[i].brojKnjige == brojKnjige){
+    for (let i = 0; i < knjige.length; i++){
+        if (knjige[i].brojKnjige == brojKnjige){
             return true;
         }
 
-        return false;
+    }
+
+    alert ("Unijeta knjiga ne postoji!");
+    return false;
+
+    for (let i = 0; i < knjige.length; i++){
+        if (knjige[i].brojKnjige == brojKnjige){
+            if (knjige[i].statusKnjigeDaLiJeIzdataIliNe == true){
+                alert ("Knjiga je podignuta!");
+                return false;
+            }
+        }
     }
 }
+
+
+function vracanjeKnjige(){
+
 }
+
+
