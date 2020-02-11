@@ -92,4 +92,10 @@ function validacijaZaKreacijuKnjige(){
     }
     
 }
+
+function podizanjeKnjige(){
+
+    
+
+}
 }
