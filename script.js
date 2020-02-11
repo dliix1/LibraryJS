@@ -95,7 +95,12 @@ function validacijaZaKreacijuKnjige(){
 
 function podizanjeKnjige(){
 
-    
+    let brojRacuna = prompt ("Unesite broj racuna!", " ");
+    let brojKnjige = prompt ("Unesite broj knjige!", " ");
+
+    if (brojRacuna == null){
+        alert ("Ne postoji racun sa unijetim brojem!")
+    }
 
 }
 }
