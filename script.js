@@ -169,6 +169,44 @@ function validacijaKnjigeZaPodizanjeKnjige(){
 
 function vracanjeKnjige(){
 
+    let brojRacuna = prompt ("Unesite broj racuna!", " ");
+    let brojKnjige = prompt ("Unesite broj knjige!", " ");
+
+    if (validacijaRacunaZaPodizanjeKnjige(brojRacuna) && validacijaKnjigeZaPodizanjeKnjige(brojKnjige)) {
+		
+		for (let i = 0; i < knjige.length; i++) {
+			if (knjige[i].brojKnjige == brojKnjige) {
+				knjige[i].status = false;
+			}
+		}
+
+		for (let i = 0; i < korisnik.length; i++) {
+			if (korisnici[i].brojRacuna == brojRacuna) {
+				for (let j = 0; j < korisnik[i].knjige.length; j++) {
+					if (korisnik[i].knjige[j].brojKnjige == brojKnjige) {
+						korisnik[i].knjige.splice(korisnik[i].knjige[j], 1);
+					}
+				}
+			}
+		}
+
+		alert('Uspjesno ste vratili knjigu!');
+	}
+
+}
+
+function ispisRacuna(){
+
+    let brojRacuna = prompt ("Unesite broj racuna!", " ");
+
+    for (let i = 0; i < korisnik.length; i++){
+        if (korisnik[i].brojRacuna == brojRacuna){
+            alert("Broj racuna: " + brojRacuna + ", ime racuna: " + imeRacuna);
+        } 
+        else {
+            alert("Uneseni broj racuna ne postoji!")
+        }
+    }
 }
 
 
